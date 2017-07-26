@@ -1,4 +1,4 @@
-# Keyphrase - Find the most import key phrase from the corpus and use it for evaluating other document
+# Find the most important key phrase from the corpus and use it for evaluating other document
 
 Python - 2.7
 # Dependencies
