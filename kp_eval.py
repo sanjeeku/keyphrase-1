@@ -119,8 +119,8 @@ class top_phrase_transcript(object):
 # =================================================================================================== 
 
 # MODEL EVALUATION
-# Corpus and test files.You can change files here
-# script is the corpus/training file. And transcript are test files
+# Corpus and test files.You can change document here.Make sure your file path is the same path as code directory.
+# script is the corpus/training document. And transcript are test files
 script = read_file('script.txt')
 transcript_1 = read_file('transcript_1.txt')
 transcript_2 = read_file('transcript_2.txt')
@@ -141,7 +141,7 @@ t3_sent = prep_sentences(transcript_3)
 
 # =================================================================================================== 
 
-#You can change the document/data to be fed for training or evaluation 
+#You can SELECT the document/data to be fed for training or evaluation 
 # List of best phrases, rank and score for a document(corpus or test), based on textrank.
 c = phrase_score_textrank(script)
 
@@ -149,7 +149,7 @@ c = phrase_score_textrank(script)
 p = phrase_score_collocation(s_normalized)
 
 
-# document correlation between corpus and a test document (or between the test documents)
+# Document correlation between corpus and a test document (or amongst the test documents)
 # To evaluate correlation with other transcript - replace 'transcript_1' with 'transcript_2'/'transcript_3'
 d = document_correlation(script,transcript_1)
 
@@ -180,11 +180,11 @@ p.print_result()
 d.print_result()
 
 
-"""Using the corpus as the training data, comparing each sentences in transcript for their similarity with corpus"""
+"""Using the corpus as the training set, comparing each sentences in transcript for their similarity with corpus"""
 s.print_result()
 
 
-"""FINAL OUTPUT - Using the Top key phrases from the corpus(script) to scrore and rank transcript document"""
+"""FINAL OUTPUT - Using the Top key phrases from the corpus(script) to score and rank transcript document"""
 t.transcript_scores()
 
 
