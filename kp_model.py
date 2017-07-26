@@ -1,12 +1,8 @@
 
-# coding: utf-8
-
-# In[1]:
+# Building the learning model
 
 from kp_util import *
 
-
-# In[2]:
 
 import nltk
 import re
@@ -24,12 +20,6 @@ from itertools import takewhile, tee, izip
 import networkx
 
 
-# In[ ]:
-
-
-
-
-# In[3]:
 
 bigram_measure = BigramAssocMeasures()
 def bigram_coll(text,n=50):
@@ -46,9 +36,6 @@ def bigram_coll_score(text, n=500):
     return scored[:n]
 
 
-# In[4]:
-
-
 def spearman_metrics(text1, text2):
     text1_list = bigram_coll(text1)
     text2_list = bigram_coll(text2)
@@ -57,8 +44,6 @@ def spearman_metrics(text1, text2):
     comparison = spearman_correlation(rank1, rank2)
     return comparison
 
-
-# In[5]:
 
 def build_feature_matrix(documents, feature_type='frequency', ngram_range=(1,1), min_df =0.0, max_df=1):
     feature_type = feature_type.lower().strip()
@@ -79,7 +64,6 @@ def build_feature_matrix(documents, feature_type='frequency', ngram_range=(1,1),
     return vectorizer, feature_matrix
 
 
-# In[6]:
 
 def keyphrases_score_by_textrank(text, n_keywords=0.05):
     # tokenize
@@ -128,7 +112,6 @@ def keyphrases_score_by_textrank(text, n_keywords=0.05):
     return sorted(keyphrases.iteritems(), key=lambda x:x[1], reverse=True)
 
 
-# In[7]:
 
 def compute_cosine_similarity(doc_features, corpus_features, top_n=3):
     # document vectors
@@ -143,28 +126,6 @@ def compute_cosine_similarity(doc_features, corpus_features, top_n=3):
     top_docs_with_score = [(index,round(similarity[index],3)) for index in top_docs]
     return top_docs_with_score
 
-
-# In[53]:
-
-
-
-
-# In[12]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
 
 
 
