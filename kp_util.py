@@ -1,7 +1,5 @@
 
-# coding: utf-8
-
-# In[1]:
+# Preprocess the document
 
 import numpy as np
 import nltk
@@ -17,7 +15,6 @@ from nltk.collocations import BigramCollocationFinder
 from nltk.collocations import BigramAssocMeasures
 
 
-# In[2]:
 
 # Import and read the file
 def read_file(filename):
@@ -25,8 +22,6 @@ def read_file(filename):
         script = (scriptfile.read()).decode('utf8')
     return script
 
-
-# In[3]:
 
 class extract(object):
     def __init__(self, text):
@@ -49,8 +44,7 @@ class extract(object):
         #return [cand for cand in candidates if cand not in stop_words and not all(char in punct for char in cand)]
         all_chunked.append(candidates)
         return all_chunked
-    
-    
+        
     def words(self, good_tags=set(['JJ','JJR','JJS','NN','NNP','NNS','NNPS'])):
         import itertools, nltk, string
 
@@ -61,14 +55,12 @@ class extract(object):
         # tokenize and POS-tag words
         tagged_tokens = itertools.chain.from_iterable(nltk.pos_tag_sents(nltk.word_tokenize(sent) for sent in nltk.sent_tokenize(self.text)))
 
-
         # filter on certain POS tags and lowercase all words
         words = [word.lower() for word,tag in tagged_tokens if tag in good_tags and word.lower() not in stop_words and not all(char in punct for char in word)]
 
         return words    
 
 
-# In[4]:
 
 def tokenize_text(text):
     tokens = nltk.word_tokenize(text)
@@ -88,7 +80,6 @@ def remove_stopwords(text):
     filtered_text = ' '.join(filtered_tokens)
     return filtered_text
 
-
 def remove_numbers(tokenized_text):
     pattern = re.compile(r'[0-9]')
     filtered_token = [pattern.sub("",token) for token in tokenized_text]
@@ -105,40 +96,9 @@ def normalize_text(text):
     return text
 
 
-# In[5]:
-
 def prep_sentences(corpus):
     sentences = [sent for sent in nltk.sent_tokenize(corpus)]
     sentences = remove_numbers(sentences)    
     return sentences
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
 
 
