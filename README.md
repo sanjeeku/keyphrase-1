@@ -13,11 +13,11 @@ Python - 2.7
 - Generating rank and score for these ke-phrases based on its influence on other document
 
 # Methodology
- Bigram Collocation and Text rank used to identify the top key phrases
- Used Tfidf, cosine similarity, spearman metrics
- Two kinds of preprocessing. 
-1) Normalized corpus removing special characters,numbers,punctuation,stopwords and word tokenized
-2) Tokenized sentences. Sentences are fed into the training algorithm
+- Bigram Collocation and Text rank used to identify the top key phrases
+- Used Tfidf, cosine similarity, spearman metrics
+- Two kinds of preprocessing. 
+  1) Normalized corpus removing special characters,numbers,punctuation,stopwords and word tokenized
+  2) Tokenized sentences. Sentences are fed into the training algorithm
 
 # Output
 - KEY PHRASES (using TextRank method). Shows rank, phrases and score
