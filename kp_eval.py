@@ -1,20 +1,12 @@
 
-# coding: utf-8
-
-# In[3]:
+# Evaluating the result. Training the model and printing out the results.
 
 from kp_util import *
 from kp_model import *
 
-
-# In[4]:
-
 from kp_model import bigram_coll_score,bigram_coll,spearman_metrics,build_feature_matrix,keyphrases_score_by_textrank,bigram_coll_score
 from kp_util import extract
 from kp_model import compute_cosine_similarity
-
-
-# In[5]:
 
 import nltk
 import re
@@ -28,8 +20,6 @@ from nltk.collocations import *
 from nltk.collocations import BigramCollocationFinder
 from nltk.collocations import BigramAssocMeasures
 
-
-# In[6]:
 
 class phrase_score_textrank(object):
     def __init__(self,corpus):
@@ -76,8 +66,7 @@ class phrase_score_collocation(object):
         for index, ((word1,word2), score) in enumerate(bigram_coll_score(self.normalized_corpus)):
             print index, word1,word2, score
 
-
-# In[7]:
+# =================================================================================================== 
 
 class document_similarity(object):
     def __init__(self, corpus,transcript):
@@ -106,8 +95,7 @@ class document_similarity(object):
                 print '-'*80
             print 
 
-
-# In[8]:
+# =================================================================================================== 
 
 class top_phrase_transcript(object):
     def __init__(self,top_training_phrase,transcript):
@@ -128,8 +116,7 @@ class top_phrase_transcript(object):
         for index,item in enumerate(sorted_scores):
             print index, " {0:50} Score: {1}".format(item[0], item[1])
 
-
-# In[9]:
+# =================================================================================================== 
 
 # MODEL EVALUATION
 # Corpus and test files.You can change files here
@@ -138,7 +125,6 @@ script = read_file('script.txt')
 transcript_1 = read_file('transcript_1.txt')
 transcript_2 = read_file('transcript_2.txt')
 transcript_3 = read_file('transcript_3.txt')
-
 
 # Normalized and word tokenized
 s_normalized = normalize_text(script)
@@ -153,14 +139,13 @@ t2_sent = prep_sentences(transcript_2)
 t3_sent = prep_sentences(transcript_3)
 
 
-
-# In[10]:
+# =================================================================================================== 
 
 #You can change the document/data to be fed for training or evaluation 
-# List of best phrase, rank and score for a document(corpus or test), based on text rank.
+# List of best phrases, rank and score for a document(corpus or test), based on textrank.
 c = phrase_score_textrank(script)
 
-# List of best phrase, rank and score for a document(corpus or test), based on bigram collocation
+# List of best phrases, rank and score for a document(corpus or test), based on bigram collocation
 p = phrase_score_collocation(s_normalized)
 
 
@@ -171,63 +156,38 @@ d = document_correlation(script,transcript_1)
 
 # Document similarity [0-1] between a corpus and test document (or between the test documents). 
 # Here, sentence to sentences are evaluated
-# To evaluate similarity with other transcript - replace below - 't3_sent' with 't1_sent'/'t2_sent'
+# To evaluate similarity with other transcript - replace - 't3_sent' with 't1_sent'/'t2_sent'
 s = document_similarity(s_sent,t3_sent)
 
 
 # FINAL RESULT
 #Taking the top phrase from the corpus, ranking and scoring transcript documents
 # You can replace 't1_sent' with 't2_sent'/'t3_sent'
-
 t = top_phrase_transcript(script,t1_sent)
 
 
-# In[11]:
+####################### PRINT OUT THE RESULT ######################################################
 
 """KEY PHRASES (using TextRank method). Shows rank, phrases and score"""
 c.print_result()
 
 
-# In[12]:
-
 """KEY PHRASES (using Bigram-collocation method)"""
 p.print_result()
 
-
-# In[13]:
 
 """Using the Bigram based top phrases, calculating the correlation/similarity between the documents"""
 d.print_result()
 
 
-# In[14]:
-
 """Using the corpus as the training data, comparing each sentences in transcript for their similarity with corpus"""
 s.print_result()
 
-
-# In[15]:
 
 """FINAL OUTPUT - Using the Top key phrases from the corpus(script) to scrore and rank transcript document"""
 t.transcript_scores()
 
 
-# In[ ]:
-
-
-
-
-# In[20]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[23]:
 
 # Run all the result at one go
 def main():
@@ -240,45 +200,10 @@ def main():
     t.transcript_scores()
     
 
-
-# In[24]:
-
 main()
 
 
-# 
 
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
 
 
 
