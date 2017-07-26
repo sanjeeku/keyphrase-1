@@ -1,7 +1,7 @@
-# keyphrase - Find the most import key phrase from the corpus and use it for evaluating other document
+# Keyphrase - Find the most import key phrase from the corpus and use it for evaluating other document
 
 Python - 2.7
-#Dependencies
+# Dependencies
 - NLTK
 - Numpy
 - Scikit-learn
