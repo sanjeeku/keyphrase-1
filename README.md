@@ -28,3 +28,4 @@ Python - 2.7
 
 # Evaluating and Testing
 Upload/add/change file name with path (if in other directory) with read_file function in the kp_eval.py
+Download all the files, check for dependencies, and run main() to get all outputs. Or run individual class.
