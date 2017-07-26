@@ -20,11 +20,11 @@ Python - 2.7
 2) Tokenized sentences. Sentences are fed into the training algorithm
 
 # Output
-a) KEY PHRASES (using TextRank method). Shows rank, phrases and score
-b) KEY PHRASES (using Bigram-collocation method)
-c) Using the Bigram based top phrases, calculating the correlation/similarity between the documents
-d) Using the corpus as the training set, comparing each sentences in transcript for their similarity with corpus
-e) FINAL OUTPUT - Using the Top key phrases from the corpus(script) to score and rank transcript document
+- KEY PHRASES (using TextRank method). Shows rank, phrases and score
+- KEY PHRASES (using Bigram-collocation method)
+- Using the Bigram based top phrases, calculating the correlation/similarity between the documents
+- Using the corpus as the training set, comparing each sentences in transcript for their similarity with corpus
+- FINAL OUTPUT - Using the Top key phrases from the corpus(script) to score and rank transcript document
 
 # Evaluating and Testing
 Upload/add/change file name with path (if in other directory) with read_file function in the kp_eval.py
